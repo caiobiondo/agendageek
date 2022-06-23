@@ -1,0 +1,60 @@
+<ContentNavigationDrawer>:
+    orientation: 'vertical'
+    padding: '8dp'
+    spacing: '8dp'
+
+
+    AnchorLayout:
+        anchor_x: 'left'
+        size_hint_y: None
+        height: avatar.height
+
+        Image:
+            id: avatar
+            size_hint: None, None
+            size: "50dp", "50dp"
+            source: 'data/logo.png'
+
+    ScrollView:
+
+        MDList:
+
+            OneLineListItem:
+                text:'Home'
+
+
+            OneLineListItem:
+                text:'About us'
+
+
+
+<MainWidget>
+    Screen:
+
+        MDNavigationLayout:
+            ScreenManager:
+                id: screen_manager
+
+                HomeScreen:
+                    name: 'home screen'
+                    BoxLayout:
+                        orientation: 'vertical'
+
+                        MDToolbar:
+                            title:'My app'
+                            elevation:10
+                            #left_action_items:[['menu',lambda x: nav_drawer.toggle_nav_drawer()]]
+                            left_action_items: [['menu', lambda x: nav_drawer.set_state('toggle')]]
+
+                        ScrollView:
+
+
+
+
+            MDNavigationDrawer:
+                id: nav_drawer
+
+                ContentNavigationDrawer:
+                    id: content_drawer
+                    screen_manager: screen_manager
+                    nav_drawer: nav_drawer
